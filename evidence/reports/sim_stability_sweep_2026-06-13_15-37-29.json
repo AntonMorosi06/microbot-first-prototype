@@ -1,0 +1,618 @@
+{
+  "model": {
+    "nbody": 10,
+    "ngeom": 32,
+    "njnt": 3,
+    "nq": 9,
+    "nu": 2,
+    "nv": 8
+  },
+  "parameters": {
+    "controls": [
+      0.02,
+      0.04,
+      0.06,
+      0.08,
+      0.1,
+      0.12,
+      0.14,
+      0.16,
+      0.18,
+      0.2
+    ],
+    "max_tilt": 45.0,
+    "max_xy": 0.25,
+    "min_height": 0.035,
+    "pulse": 0.7,
+    "return_time": 0.7,
+    "sample_stride": 10,
+    "settle": 1.0
+  },
+  "reports": {
+    "csv": "/Users/antonmorosi/Desktop/first real prototyope/microbot-round-v0/evidence/reports/sim_stability_sweep_2026-06-13_15-37-29.csv",
+    "json": "/Users/antonmorosi/Desktop/first real prototyope/microbot-round-v0/evidence/reports/sim_stability_sweep_2026-06-13_15-37-29.json",
+    "markdown": "/Users/antonmorosi/Desktop/first real prototyope/microbot-round-v0/evidence/reports/sim_stability_sweep_2026-06-13_15-37-29.md"
+  },
+  "results": [
+    {
+      "amplitude": 0.02,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 17.163701205093446,
+        "max_xy_distance": 0.0025567586040548987,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.02,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.02,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.04,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 17.071388328085128,
+        "max_xy_distance": 0.002545059638374082,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.04,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.04,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.06,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.97866021883438,
+        "max_xy_distance": 0.0025333032517040393,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.06,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.06,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.08,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.88552091923757,
+        "max_xy_distance": 0.00252148970503362,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.08,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.08,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.1,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.79197451299223,
+        "max_xy_distance": 0.002509619265785997,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.1,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.1,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.12,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.69802512534554,
+        "max_xy_distance": 0.002497692207834391,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.12,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.12,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.14,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.603676922834318,
+        "max_xy_distance": 0.002485708811516454,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.14,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.14,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.16,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.50893411301578,
+        "max_xy_distance": 0.0024736693636471085,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.16,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.16,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.18,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.41380094418908,
+        "max_xy_distance": 0.0024615741575294676,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.18,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.18,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    },
+    {
+      "amplitude": 0.2,
+      "left_actuator_id": 0,
+      "loaded_standing_idle_keyframe": true,
+      "message": "Stable.",
+      "metrics": {
+        "final_time": 3.791999999999804,
+        "max_tilt_degrees": 16.318281705108017,
+        "max_xy_distance": 0.00244942349296419,
+        "min_root_height": 0.07567756714022589
+      },
+      "phase_results": [
+        {
+          "duration": 1.0,
+          "left_ctrl": 0.0,
+          "message": "settle_idle: stable",
+          "phase": "settle_idle",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.2,
+          "message": "left_nudge: stable",
+          "phase": "left_nudge",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_left: stable",
+          "phase": "return_after_left",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "right_nudge: stable",
+          "phase": "right_nudge",
+          "right_ctrl": -0.2,
+          "status": "OK"
+        },
+        {
+          "duration": 0.7,
+          "left_ctrl": 0.0,
+          "message": "return_after_right: stable",
+          "phase": "return_after_right",
+          "right_ctrl": 0.0,
+          "status": "OK"
+        }
+      ],
+      "right_actuator_id": 1,
+      "sample_count": 195,
+      "status": "OK"
+    }
+  ],
+  "session_id": "sim_stability_sweep_2026-06-13_15-37-29",
+  "summary": {
+    "failed_count": 0,
+    "max_stable_amplitude": 0.2,
+    "recommended_conservative_control": 0.15,
+    "stable_count": 10,
+    "status": "OK",
+    "tested_count": 10
+  },
+  "xml_path": "/Users/antonmorosi/Desktop/first real prototyope/microbot-round-v0/simulation/microbot_round_body.xml"
+}

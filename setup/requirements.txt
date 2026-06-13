@@ -1,0 +1,87 @@
+# MicroBot Round V0 Python Requirements
+
+#
+
+# This file contains the minimal Python dependencies for the first
+
+# MicroBot Round V0 hardware bring-up.
+
+#
+
+# Install with:
+
+#
+
+# python -m venv .venv
+
+# source .venv/bin/activate
+
+# python -m pip install --upgrade pip
+
+# python -m pip install -r setup/requirements.txt
+
+#
+
+# Notes:
+
+#
+
+# - This file is intentionally minimal.
+
+# - Do not add heavy AI, computer vision or dashboard dependencies yet.
+
+# - Add packages only when a real script needs them.
+
+# - Some Raspberry Pi camera and audio tools may need system packages
+
+# installed with apt, not only pip.
+
+# - Hardware-specific libraries may behave differently on macOS/Linux
+
+# compared with Raspberry Pi OS.
+
+# Serial communication for serial bus servos.
+
+pyserial==3.5
+
+# I2C / SMBus communication for IMU, distance sensor and optional ADC modules.
+
+smbus2==0.6.1
+
+# Raspberry Pi WS281X / WS2812 LED control.
+
+# Usually tested on Raspberry Pi hardware, sometimes requiring root or GPIO permissions.
+
+rpi-ws281x==5.0.0
+
+# Optional future dependencies:
+
+#
+
+# Flask can be added later for the local dashboard.
+
+# flask
+
+#
+
+# NumPy can be added later for sensor math, IMU filtering or simple analysis.
+
+# numpy
+
+#
+
+# OpenCV can be added later for camera-based perception experiments.
+
+# opencv-python
+
+#
+
+# Picamera2 is commonly installed through Raspberry Pi OS packages instead of pip.
+
+# Do not add it here until the camera setup is tested on the real controller.
+
+#
+
+# Audio tools such as espeak-ng, flite, aplay and arecord are usually installed
+
+# as system packages, not pip packages.

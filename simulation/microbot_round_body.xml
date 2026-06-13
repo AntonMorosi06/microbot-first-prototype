@@ -1,0 +1,444 @@
+<mujoco model="microbot_round_v0">
+  <compiler angle="degree" coordinate="local" inertiafromgeom="true"/>
+
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="RK4">
+    <flag contact="enable" energy="enable"/>
+  </option>
+
+  <size njmax="500" nconmax="100"/>
+
+  <default>
+    <geom
+      contype="1"
+      conaffinity="1"
+      condim="3"
+      friction="1.2 0.3 0.1"
+      solref="0.02 1"
+      solimp="0.8 0.8 0.01"
+    />
+
+    <joint
+      damping="0.06"
+      armature="0.003"
+      limited="true"
+    />
+
+    <motor
+      ctrllimited="true"
+      ctrlrange="-1 1"
+    />
+  </default>
+
+  <asset>
+    <texture
+      name="grid"
+      type="2d"
+      builtin="checker"
+      rgb1="0.08 0.08 0.08"
+      rgb2="0.16 0.16 0.16"
+      width="512"
+      height="512"
+    />
+
+    <material
+      name="floor_mat"
+      texture="grid"
+      texrepeat="4 4"
+      reflectance="0.15"
+    />
+
+    <material name="body_black" rgba="0.02 0.02 0.025 1"/>
+    <material name="shell_dark" rgba="0.05 0.05 0.065 1"/>
+    <material name="edge_soft" rgba="0.12 0.12 0.14 1"/>
+    <material name="servo_blue" rgba="0.05 0.18 0.42 1"/>
+    <material name="leg_gray" rgba="0.18 0.18 0.20 1"/>
+    <material name="foot_rubber" rgba="0.03 0.03 0.035 1"/>
+    <material name="camera_glass" rgba="0.02 0.04 0.08 1"/>
+    <material name="led_blue" rgba="0.0 0.25 1.0 1"/>
+    <material name="led_green" rgba="0.0 0.9 0.25 1"/>
+    <material name="led_red" rgba="1.0 0.04 0.02 1"/>
+    <material name="pcb_green" rgba="0.02 0.25 0.10 1"/>
+    <material name="battery" rgba="0.18 0.18 0.22 1"/>
+    <material name="speaker" rgba="0.01 0.01 0.01 1"/>
+    <material name="metal" rgba="0.55 0.55 0.58 1"/>
+  </asset>
+
+  <worldbody>
+    <light
+      name="key_light"
+      pos="0 -2 2"
+      dir="0 1 -1"
+      diffuse="0.8 0.8 0.8"
+      specular="0.2 0.2 0.2"
+    />
+
+    <light
+      name="fill_light"
+      pos="2 1 1.5"
+      dir="-1 -0.5 -1"
+      diffuse="0.3 0.3 0.35"
+      specular="0.1 0.1 0.1"
+    />
+
+    <geom
+      name="floor"
+      type="plane"
+      size="2 2 0.02"
+      material="floor_mat"
+    />
+
+    <!--
+      Patched initial height:
+      Old root Z was 0.105, which started the robot too high.
+      New root Z is 0.078, so the feet begin close to the floor.
+    -->
+    <body name="microbot_root" pos="0 0 0.078">
+      <freejoint name="root_freejoint"/>
+
+      <!-- Main rounded body approximation -->
+      <geom
+        name="main_lower_shell"
+        type="box"
+        size="0.066 0.0415 0.018"
+        pos="0 0 0"
+        material="body_black"
+        mass="0.090"
+      />
+
+      <geom
+        name="front_rounding"
+        type="sphere"
+        size="0.0415"
+        pos="0.066 0 0"
+        material="body_black"
+        mass="0.015"
+      />
+
+      <geom
+        name="rear_rounding"
+        type="sphere"
+        size="0.0415"
+        pos="-0.066 0 0"
+        material="body_black"
+        mass="0.015"
+      />
+
+      <geom
+        name="top_shell"
+        type="ellipsoid"
+        size="0.070 0.044 0.022"
+        pos="0 0 0.024"
+        material="shell_dark"
+        mass="0.030"
+      />
+
+      <geom
+        name="bottom_shell"
+        type="ellipsoid"
+        size="0.070 0.044 0.014"
+        pos="0 0 -0.018"
+        material="edge_soft"
+        mass="0.020"
+      />
+
+      <!-- Internal electronics blocks -->
+      <geom
+        name="raspberry_pi_zero_2w"
+        type="box"
+        size="0.032 0.016 0.003"
+        pos="-0.020 0 0.016"
+        material="pcb_green"
+        mass="0.012"
+      />
+
+      <!--
+        Battery lowered slightly and made a little heavier to lower center of mass.
+      -->
+      <geom
+        name="battery_1s"
+        type="box"
+        size="0.030 0.018 0.009"
+        pos="0.020 0 -0.010"
+        material="battery"
+        mass="0.040"
+      />
+
+      <geom
+        name="imu_mpu6050"
+        type="box"
+        size="0.010 0.008 0.002"
+        pos="-0.050 0.020 0.026"
+        material="pcb_green"
+        mass="0.002"
+      />
+
+      <geom
+        name="boost_converter_mt3608"
+        type="box"
+        size="0.012 0.008 0.003"
+        pos="0.046 -0.020 0.010"
+        material="pcb_green"
+        mass="0.004"
+      />
+
+      <geom
+        name="charger_tp4056"
+        type="box"
+        size="0.014 0.009 0.003"
+        pos="0.046 0.020 0.010"
+        material="pcb_green"
+        mass="0.004"
+      />
+
+      <!-- Camera module -->
+      <body name="front_camera_module" pos="0.078 0 0.014">
+        <geom
+          name="camera_board"
+          type="box"
+          size="0.010 0.014 0.002"
+          material="pcb_green"
+          mass="0.003"
+        />
+
+        <geom
+          name="camera_lens"
+          type="cylinder"
+          size="0.006 0.004"
+          pos="0.004 0 0.003"
+          euler="0 90 0"
+          material="camera_glass"
+          mass="0.002"
+        />
+
+        <camera
+          name="front_camera"
+          pos="0.012 0 0.004"
+          euler="0 90 0"
+          fovy="70"
+        />
+      </body>
+
+      <!-- Speaker and microphone -->
+      <geom
+        name="speaker_disk"
+        type="cylinder"
+        size="0.014 0.003"
+        pos="-0.050 0 0.030"
+        euler="0 0 0"
+        material="speaker"
+        mass="0.005"
+      />
+
+      <geom
+        name="microphone_inmp441"
+        type="box"
+        size="0.006 0.004 0.002"
+        pos="0.000 0.032 0.025"
+        material="pcb_green"
+        mass="0.001"
+      />
+
+      <!-- LED ring visual markers on the top surface -->
+      <body name="led_ring_visual" pos="0 0 0.049">
+        <geom name="led_0" type="sphere" size="0.004" pos="0.000 0.028 0" material="led_blue" mass="0.0001"/>
+        <geom name="led_1" type="sphere" size="0.004" pos="0.022 0.017 0" material="led_green" mass="0.0001"/>
+        <geom name="led_2" type="sphere" size="0.004" pos="0.027 -0.006 0" material="led_blue" mass="0.0001"/>
+        <geom name="led_3" type="sphere" size="0.004" pos="0.012 -0.025 0" material="led_red" mass="0.0001"/>
+        <geom name="led_4" type="sphere" size="0.004" pos="-0.012 -0.025 0" material="led_green" mass="0.0001"/>
+        <geom name="led_5" type="sphere" size="0.004" pos="-0.027 -0.006 0" material="led_blue" mass="0.0001"/>
+        <geom name="led_6" type="sphere" size="0.004" pos="-0.022 0.017 0" material="led_red" mass="0.0001"/>
+      </body>
+
+      <!-- Left servo and leg -->
+      <body name="left_servo_body" pos="0 0.052 -0.005">
+        <geom
+          name="left_servo_case"
+          type="box"
+          size="0.015 0.010 0.012"
+          material="servo_blue"
+          mass="0.009"
+        />
+
+        <body name="left_leg" pos="0 0.012 -0.002">
+          <joint
+            name="left_leg_hinge"
+            type="hinge"
+            axis="0 1 0"
+            range="-35 35"
+            damping="0.08"
+          />
+
+          <geom
+            name="left_leg_link"
+            type="capsule"
+            fromto="0 0 0 0.000 0.000 -0.052"
+            size="0.008"
+            material="leg_gray"
+            mass="0.012"
+          />
+
+          <geom
+            name="left_leg_side_pad"
+            type="box"
+            size="0.006 0.004 0.020"
+            pos="0.010 0.000 -0.026"
+            material="metal"
+            mass="0.002"
+          />
+
+          <body name="left_rounded_foot" pos="0 0 -0.060">
+            <geom
+              name="left_foot_capsule"
+              type="capsule"
+              fromto="-0.024 0 0 0.024 0 0"
+              size="0.010"
+              material="foot_rubber"
+              mass="0.014"
+              friction="1.5 0.35 0.12"
+            />
+
+            <geom
+              name="left_foot_contact_pad"
+              type="box"
+              size="0.026 0.007 0.003"
+              pos="0 0 -0.007"
+              material="foot_rubber"
+              mass="0.003"
+              friction="1.5 0.35 0.12"
+            />
+          </body>
+        </body>
+      </body>
+
+      <!-- Right servo and leg -->
+      <body name="right_servo_body" pos="0 -0.052 -0.005">
+        <geom
+          name="right_servo_case"
+          type="box"
+          size="0.015 0.010 0.012"
+          material="servo_blue"
+          mass="0.009"
+        />
+
+        <body name="right_leg" pos="0 -0.012 -0.002">
+          <joint
+            name="right_leg_hinge"
+            type="hinge"
+            axis="0 1 0"
+            range="-35 35"
+            damping="0.08"
+          />
+
+          <geom
+            name="right_leg_link"
+            type="capsule"
+            fromto="0 0 0 0.000 0.000 -0.052"
+            size="0.008"
+            material="leg_gray"
+            mass="0.012"
+          />
+
+          <geom
+            name="right_leg_side_pad"
+            type="box"
+            size="0.006 0.004 0.020"
+            pos="0.010 0.000 -0.026"
+            material="metal"
+            mass="0.002"
+          />
+
+          <body name="right_rounded_foot" pos="0 0 -0.060">
+            <geom
+              name="right_foot_capsule"
+              type="capsule"
+              fromto="-0.024 0 0 0.024 0 0"
+              size="0.010"
+              material="foot_rubber"
+              mass="0.014"
+              friction="1.5 0.35 0.12"
+            />
+
+            <geom
+              name="right_foot_contact_pad"
+              type="box"
+              size="0.026 0.007 0.003"
+              pos="0 0 -0.007"
+              material="foot_rubber"
+              mass="0.003"
+              friction="1.5 0.35 0.12"
+            />
+          </body>
+        </body>
+      </body>
+
+      <!-- Sites for logging/debugging -->
+      <site
+        name="imu_site"
+        pos="-0.050 0.020 0.032"
+        size="0.004"
+        rgba="0 1 0 1"
+      />
+
+      <site
+        name="camera_site"
+        pos="0.090 0 0.020"
+        size="0.004"
+        rgba="0 0.4 1 1"
+      />
+
+      <site
+        name="center_of_mass_reference"
+        pos="0 0 0"
+        size="0.004"
+        rgba="1 1 1 1"
+      />
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor
+      name="left_leg_motor"
+      joint="left_leg_hinge"
+      gear="0.08"
+      ctrlrange="-1 1"
+    />
+
+    <motor
+      name="right_leg_motor"
+      joint="right_leg_hinge"
+      gear="0.08"
+      ctrlrange="-1 1"
+    />
+  </actuator>
+
+  <sensor>
+    <jointpos name="left_leg_angle" joint="left_leg_hinge"/>
+    <jointpos name="right_leg_angle" joint="right_leg_hinge"/>
+
+    <jointvel name="left_leg_velocity" joint="left_leg_hinge"/>
+    <jointvel name="right_leg_velocity" joint="right_leg_hinge"/>
+
+    <accelerometer name="body_accelerometer" site="imu_site"/>
+    <gyro name="body_gyro" site="imu_site"/>
+  </sensor>
+
+  <keyframe>
+    <key
+      name="standing_idle"
+      qpos="0 0 0.078 1 0 0 0 0 0"
+      ctrl="0 0"
+    />
+
+    <key
+      name="small_left_nudge"
+      qpos="0 0 0.078 1 0 0 0 0.20 0"
+      ctrl="0.25 0"
+    />
+
+    <key
+      name="small_right_nudge"
+      qpos="0 0 0.078 1 0 0 0 0 -0.20"
+      ctrl="0 -0.25"
+    />
+  </keyframe>
+</mujoco>
