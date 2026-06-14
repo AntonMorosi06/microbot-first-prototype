@@ -1,33 +1,91 @@
-# MicroBot Round V0
+# MicroBot First Prototype
 
-MicroBot Round V0 is the first physical bench prototype of a small rounded autonomous robot.
+MicroBot First Prototype is the first real bench-oriented prototype baseline for the MicroBot project.
 
-The goal of this version is not to claim full artificial intelligence, but to build a real, testable and safe robotic platform able to power on, run self-checks, read sensors, move slowly, react to unsafe conditions, save logs and present itself as a working prototype.
-
-## Target Demo
-
-- Power on MicroBot.
-- Run LED boot animation.
-- Speak an initial phrase.
-- Read IMU orientation.
-- Capture a camera frame.
-- Check basic obstacle distance.
-- Move the legs slowly and safely.
-- Stop if tilted, lifted or blocked.
-- Choose between a small set of safe actions.
-- Save a session log.
-- Generate evidence for documentation and portfolio use.
+The goal of this repository is to move from idea and documentation to a real, testable engineering workflow: software boot, safety logic, hardware bring-up, MuJoCo simulation, evidence reports, and eventually a small physical prototype.
 
 ## Current Status
 
-Prepared repository structure. Hardware, firmware, autonomy and dashboard implementation are not yet completed.
+Current status: `validated-offline / simulation-validated`
 
-## Status Vocabulary
+The repository now contains a working offline simulation pipeline. The MuJoCo model loads correctly, remains upright, passes a safe nudge test, passes a stability sweep test, and completes a repeated gait preview pattern while generating JSON, Markdown and CSV evidence reports.
 
-- planned: documented idea, not implemented yet
-- prepared: structure exists, implementation not complete
-- mocked: simulated or placeholder behavior
-- validated-offline: tested locally without real robot hardware
-- bench-tested: tested on physical bench hardware
-- hardware-validated: tested on the real assembled robot
-- demo-ready: safe and repeatable public demo
+This does not mean that the physical robot has been validated. Hardware movement, real servo behavior, real power delivery, real IMU readings, real camera capture, real LED behavior and real battery behavior must still be tested on physical hardware.
+
+## What Works
+
+- software configuration loading
+- runtime directory creation
+- logging system
+- self-check report generation
+- safety-layer self-check
+- battery threshold simulation
+- distance threshold simulation
+- hello MicroBot software boot
+- MuJoCo XML model loading
+- stable initial simulated body pose
+- safe nudge simulation
+- stability sweep simulation
+- gait preview simulation
+- evidence report generation
+
+## Main Areas
+
+- `docs/` - project documentation
+- `hardware/` - BOM, pinout, wiring and power notes
+- `setup/microbot/` - Python support modules
+- `setup/scripts/` - bring-up and test scripts
+- `simulation/` - MuJoCo model and simulation scripts
+- `evidence/reports/` - generated validation reports
+- `logs/` - local runtime logs
+
+## Simulation Commands
+
+Activate the MuJoCo environment:
+
+```bash
+source /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh
+conda activate microbot312
+```
+
+Run the current simulation validation scripts:
+
+```bash
+python simulation/run_safe_nudge.py
+python simulation/run_stability_sweep.py
+python simulation/run_gait_preview.py
+```
+
+## Correct Claim
+
+This repository can currently claim:
+
+```text
+MicroBot First Prototype has a working offline MuJoCo simulation validation pipeline.
+```
+
+It should not yet claim:
+
+- the real robot walks
+- the real hardware is validated
+- the physical robot is autonomous
+- the robot is finished
+
+## Next Milestone
+
+Next milestone: `M2 - physical hardware bring-up without movement`
+
+The next phase is to run tests on Raspberry Pi hardware without enabling physical movement:
+
+- Raspberry Pi boot
+- dependency setup
+- self-check on Pi
+- camera test
+- IMU test
+- LED test
+- audio test
+- servo scan only
+- hardware evidence photos
+- hardware evidence reports
+
+Only after that should physical safe servo movement be attempted.
